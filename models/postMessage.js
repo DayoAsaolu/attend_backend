@@ -8,8 +8,9 @@ const postSchema = mongoose.Schema({
     caucassian: String,
     newcomer: String,
     
-    forFamily: String,
+    forFamily: [],
     title: String,
+    covid19Questionaire: [],
     createdAt: {
         type: Date,
         default: new Date(),

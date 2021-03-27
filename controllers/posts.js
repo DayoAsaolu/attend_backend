@@ -27,9 +27,9 @@ export const getPost = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const { lastName, firstName, gender, group, newcomer, caucassian , title, forFamily } = req.body;
+    const { lastName, firstName, gender, group, newcomer, caucassian , title, forFamily, covid19Questionaire } = req.body;
 
-    const newPostMessage = new PostMessage({ lastName, firstName, gender, group, newcomer, caucassian , title, forFamily })
+    const newPostMessage = new PostMessage({ lastName, firstName, gender, group, newcomer, caucassian , title, forFamily, covid19Questionaire })
 
     try {
         await newPostMessage.save();
@@ -40,16 +40,16 @@ export const createPost = async (req, res) => {
     }
 }
 
-export const updatePost = async (req, res) => {
-    const { id } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
+// export const updatePost = async (req, res) => {
+//     const { id } = req.params;
+//     const { title, message, creator, selectedFile, tags } = req.body;
     
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+//     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+//     const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
-    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
-    res.json(updatedPost);
-}
+//     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+//     res.json(updatedPost);
+// }
 
 export default router;
